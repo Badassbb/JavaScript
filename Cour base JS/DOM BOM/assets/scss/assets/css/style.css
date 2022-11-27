@@ -74,7 +74,7 @@ nav::after {
   content: "";
   height: 150px;
   width: 150px;
-  background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.3), transparent);
+  background: radial-gradient(circle closest-side, rgba(0, 255, 13, 0.74), transparent);
   position: absolute;
   transform: translate(-50%, -50%);
   transition: 0.25s;
@@ -138,32 +138,7 @@ button:hover {
 .container {
   overflow: hidden;
   min-height: 100vh;
-  background: rgb(255, 255, 255);
-  cursor: crosshair;
-}
-
-.bubble {
-  position: absolute;
-  border-radius: 300px;
-  background: rgba(255, 136, 0, 0.6);
-  opacity: 0;
-  animation: anim 10s;
-  filter: hue-rotate(0deg);
-}
-
-@keyframes anim {
-  to {
-    top: -250px;
-    opacity: 1;
-    left: var(--left);
-    filter: hue-rotate(720deg);
-  }
-}
-h1 {
-  font-size: 10rem;
-  text-align: center;
-  margin-top: 20px;
-  color: dimgrey;
+  background: red;
 }
 
 /*# sourceMappingURL=style.css.map */

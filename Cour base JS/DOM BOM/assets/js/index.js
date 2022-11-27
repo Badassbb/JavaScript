@@ -95,7 +95,7 @@ window.addEventListener("scroll", () => {
   }
 });
 //----------------------------------------------------------------
-// Form Evetns
+// Form Events
 
 const inputName = document.querySelector('input[type="text"]');
 const select = document.querySelector("select");
@@ -242,8 +242,102 @@ document.body.innerHTML +=
   `;
 },1000);*/
 
-//retirer un element du DOM
+//retirer un element du DOM en cliquant sur un élément
 /*document.body.addEventListener("click", (e) =>{
   e.target.remove();
   clearInterval(interval);
 });*/
+
+//----------------------------------------------------
+//Location
+console.log(location.href);
+console.log(location.host);
+console.log(location.pathname);
+console.log(location.search);
+
+//location.replace("http://lequipe.fr");
+//-------------------------------------
+//window.onload = () => {
+//  location.href = "http://twitter.fr";
+//};
+
+//Navigator
+//console.log(navigator.userAgent);
+
+//https://developer.mozilla.org/fr/docs/web/API/Geolocation/getCurrentPosition
+
+//Geolocalisation
+/*var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(pos) {
+  var crd = pos.coords;
+
+  console.log('Votre position actuelle est :');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude : ${crd.longitude}`);
+  console.log(`La précision est de ${crd.accuracy} mètres.`);
+}
+
+function error(err) {
+  console.warn(`ERREUR (${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);*/
+
+//------------------------------------------------------------
+//History
+//console.log(history); affiche l'historique des manipulation du le DOM
+//window.history.back(); permet de pouvoir revenir en arrière
+//window.history.go(-2); retourne 2 page en arrière
+
+//---------------------------------------------------------------
+//Set property permet d'injecter au css les mouvements de la souris 
+//et de faire suivre dans le cas présent un halo
+/*
+
+window.addEventListener('mousemove', (e) => {
+  nav.style.setProperty("--x", e.layerX + "px");
+  nav.style.setProperty("--y", e.layerY + "px");
+});*/
+
+//-----------------------------------------------
+
+//Les bubulles*
+
+const counterDisplay = document.querySelector("h1");
+let counter = 0;
+
+const bubbleMaker = () => {
+  const bubble = document.createElement("span");
+  bubble.classList.add("bubble");
+  document.body.appendChild(bubble);
+  
+  const size = Math.random() *100 + 20 + "px";
+  bubble.style.height = size;
+  bubble.style.width = size;
+  
+  bubble.style.top = Math.random() * 100 + 40 + "%";
+  bubble.style.left = Math.random() * 100 + "%";
+  
+  const plusMinus = Math.random() > 0.5 ? 1 : -1;
+  bubble.style.setProperty("--left", Math.random() * 100 * plusMinus +  "%");
+  // Counter
+  bubble.addEventListener("click", () => {
+    counter++;
+    counterDisplay.textContent = counter;
+    bubble.remove();
+  });
+  
+  setTimeout(() => {
+    bubble.remove();  
+  },10000);
+  
+  
+};
+
+setInterval(bubbleMaker, 300);
+
