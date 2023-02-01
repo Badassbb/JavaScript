@@ -1,0 +1,56 @@
+body {
+    margin-left: 100px;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: wrap;
+    justify-content: start;
+
+}
+
+button {
+    background-color: hotpink;
+    margin: 20px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    margin: 0;
+    height: 50px;
+    background: linear-gradient(rgb(129, 129, 129), rgb(255, 255, 255));
+}
+
+h1 {
+
+    border-left: 3px solid red;
+    padding-left: 20px;
+    margin: 0 0 0 20px;
+    font-size: 48px;
+}
+
+p {
+    background-color: cornflowerblue;
+    width: 450px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-left: 2px solid rgb(92, 0, 92);
+
+}
+
+span {
+    width: 120px;
+    left: 500px;
+    position: absolute;
+    justify-content: end;
+    background-color: rgb(71, 179, 50);
+    border-radius: 3px;
+}
+
+.sp {
+    height: 20px;
+}
