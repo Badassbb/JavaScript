@@ -1,0 +1,7 @@
+#grille {
+    margin: auto;
+    width: 800px;
+    height: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+}
