@@ -49,7 +49,7 @@ const cartesArray = [
     }
 ];
 
-cartesArray.sort(() => 0.5 - Math.random());
+cartesArray.sort(() => 0.3 - Math.random());
 let recup = document.querySelector('#name');
 const grilleAffichage = document.querySelector('#grille');
 const resultAffichage = document.querySelector('#result');
@@ -115,4 +115,9 @@ function cartesAction() {
     }
     recup.textContent = (cartesArray[carteId].name);
 }
+
+function restart () {
+    let restart = document.getElementById('restart');
+    restart.addEventListener('click', document.location.reload());
+    }
 CreationPlateau();
