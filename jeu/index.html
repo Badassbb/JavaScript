@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script async src="./app.js"></script>
+    <title>CasinoRoyale</title>
+</head>
+
+<body>
+
+    <div id="bienvenue">
+        <h1 id="title_Message">Bienvenue au Casino Royale</h1>
+        <h2 id="press">press key "s" to continu</h2>
+    </div>
+
+
+    <div id="boardgame" class="slideInDown">
+        <div >
+            <p id="score" >score :</p>
+            <button type="button" name="quit" id="quit" onclick="quitterLaPartie();">Quittez Casino Royale</button>
+        </div>
+            <img id="card_1" src="assets/roulette.webp" class="" alt=""  onclick="cardclick(0)">
+            <img id="card_2" src="assets/poker.webp" class="" alt=""   onclick="cardclick(1)">
+            <img id="card_3" src="assets/strategy.webp" class="" alt=""  onclick="cardclick(2)">
+            <img id="card_4" src="assets/arcade.webp" class="" alt=""  onclick="cardclick(3)">
+    </div>
+<div id="highScore">
+    <button type="button" name="quit" id="quit" onclick="restart();">Restart</button>
+</div>
+</body>
+
+</html>

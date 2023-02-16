@@ -1,0 +1,212 @@
+body {
+    background-color: rgb(0, 41, 0);
+    height: 600px;
+    width: 100%;
+text-align: center;
+
+}
+
+#bienvenue {
+    background-color: darkgreen;
+    background-image: url("./assets/ressources/An-Introduction-to-the-World-of-Online-Casinos.jpg");
+    background-size: cover;
+    text-align: center;
+    margin: auto;
+    height: 600px;
+    width: auto;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#boardgame {
+    background-image: url("assets/ressources/An-Introduction-to-the-World-of-Online-Casinos.jpg");
+    background-size: cover;
+    height: 600px;
+    width: auto;
+    display: none;
+}
+
+
+
+ #boardgame img {
+    margin: 2% 3%;
+    height: 300px;
+    width: 200px;
+    border: 3px solid black;
+    border-radius: 5%;
+}
+#score{
+display: inline-block;
+font-family: 'Times New Roman', Times, serif;
+color: yellow;
+font-size: 48px;
+}
+
+#quit{
+    float: right;
+    margin-right: 50px;
+}
+
+#highScore{
+    background-image: url("assets/ressources/An-Introduction-to-the-World-of-Online-Casinos.jpg");
+    background-size: cover;
+    display: none;
+    height: 600px;
+    width: auto;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+table.darkTable {
+    margin: auto;
+    opacity: 1;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: 2px solid #000000;
+    background-color: #4A4A4A;
+    width: 50%;
+    height: 200px;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  table.darkTable td, table.darkTable th {
+    border: 1px solid #4A4A4A;
+    padding: 4px 2px;
+  }
+  table.darkTable tbody td {
+    font-size: 18px;
+    color: #E6DB3E;
+  }
+  table.darkTable tr:nth-child(even) {
+    background: #888888;
+  }
+  table.darkTable thead {
+    background: #FFD65A;
+    border-bottom: 3px solid #000000;
+  }
+  table.darkTable caption {
+    background: #FFD65A;
+    border-bottom: 3px solid #000000;
+  }
+  table.darkTable thead th {
+    margin: auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: #E6E6E6;
+    text-align: center;
+    border-left: 2px solid #4A4A4A;
+  }
+  table.darkTable thead th:first-child {
+    border-left: none;
+  }
+  
+  table.darkTable tfoot td {
+    font-size: 13px;
+  }
+
+.slideInDown {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+    @keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+
+   
+
+.flip {
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+            -webkit-animation-name: flip;
+            animation-name: flip;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            }
+            @-webkit-keyframes flip {
+            0% {
+            -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            }
+            40% {
+            -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+            transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            }
+            50% {
+            -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+            transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            80% {
+            -webkit-transform: perspective(400px) scale3d(.95, .95, .95);
+            transform: perspective(400px) scale3d(.95, .95, .95);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            100% {
+            -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            }
+            @keyframes flip {
+            0% {
+            -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+            transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            }
+            40% {
+            -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+            transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+            -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            }
+            50% {
+            -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+            transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            80% {
+            -webkit-transform: perspective(400px) scale3d(.95, .95, .95);
+            transform: perspective(400px) scale3d(.95, .95, .95);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            100% {
+            -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+            -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+            }
+            } 

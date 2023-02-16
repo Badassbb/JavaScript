@@ -1,0 +1,178 @@
+
+<meta charset="utf-8"/>
+ATTENTION - WARNING - ACHTUNG
+	Mettez le casque la musique et ne parlez à personne, sous peine de sanction.
+	Vous gérez vos pauses tout seul jusqu'à demain matin merci.
+	Si vous bloquez, vous m'appelez, je débloque.
+	à 12H je serai en visio avec Ikrame
+
+JEU DE TIRAGE
+	Objectif Javascript: Travailler AJAX, getElementById() et animations CSS
+	Durée estimée pour la réalisation: 3 minutes 45 secondes
+
+VERSION COURTE
+	Quand un joueur arrive sur la page, un message de bienvenue l'invite à appuyer sur la touche S pour commencer.
+	Il appuie sur S,
+		-> 4 cartes apparaissent avec une animation CSS.
+		-> Le span score est mis à zéro
+		-> Javascript place le texte "Vous avez choisi la Roulette" dans un span bien visible.
+		-> JS choisit une carte avec rand
+
+	Il clique sur une carte. Par exemple la Roulette.
+		-> les 3 autres cartes disparaissent.
+
+	Il clique sur le boutton "Quitter la salle"
+		-> Le client signale en AJAX au serveur que le joueur a quitté la salle.
+		-> Le serveur répond par la liste des meilleurs scores, au format CSV,
+		-> La table HTML des joueurs est générée et placée dans un div float left ou right selon sa chaise
+
+FICHIERS DU JEU sur le FTP
+	/prénom/javascript/jeu/index.html
+	/prénom/javascript/jeu/style.css
+	/prénom/javascript/jeu/nouveau_joueur.php
+	/prénom/javascript/jeu/joueurs_roulette.csv
+	/prénom/javascript/jeu/joueurs_poker.csv
+	/prénom/javascript/jeu/joueurs_strategie.csv
+	/prénom/javascript/jeu/joueurs_retroArcade.csv
+	/prénom/javascript/jeu/img/background.webp
+	/prénom/javascript/jeu/img/roulette.webp
+	/prénom/javascript/jeu/img/poker.webp
+	/prénom/javascript/jeu/img/strategie.webp
+	/prénom/javascript/jeu/img/retroArcade.webp
+
+VERSION LONGUE
+
+Créer un dossier /prénom/javascript/jeu
+
+Créer index.html (HTML5 valide avec doctype) qui souhaite la bienvenue au joueur en l'invitant à presser la touche S pour commencer à jouer.
+Quand on presse la touche S (pour Start), quatre cartes apparaissent avec une animation CSS pour choisir une salle:
+
+	Roulette, Poker, Stratégie, Rétro arcade
+
+=============================================================================
+1. Trouver et mettre une image sur chaque carte, image webp si possible car c'est le plus léger/rapide à charger,
+	soigner le front pour faire un truc joli
+
+=============================================================================
+2. Tester cet exemple pour savoir quelle touche a été pressée
+<body>
+<script>
+document.body.onkeydown=function(e){
+	console.log(e.key);
+}
+</script>
+</body>
+
+=============================================================================
+3. Animations
+Les 4 cartes apparaissent avec une animation à choisir sur 
+
+	https://www.theappguruz.com/tag-tools/web/CSSAnimations/
+
+Il suffit de copier la classe du site vers votre CSS,
+puis donner à un élément la classe de l'animation pour l'animer.
+
+Exemple
+Cette carte est animée par défaut en mettant deux noms de classe (une pour le style et une pour l'animation) dans l'attribut class:
+<div id="carte1" class="carte slideInUp" onclick="">Roulette</div>
+Ou en JS:
+const carte = document.getElementById("carte1")
+carte.className = "slideInUp"; // ... le div s'anime car le CSS contient une règle de style .slideInUp
+carte.className = ""; // le div reprend sa classe originale (à stocker dans une variable avant d'assigner une animation)
+=============================================================================
+4. AJAX, PHP et CSV
+
+Quand on clique sur une carte,
+
+Le client signale au serveur en Ajax asynchrone avec la méthode GET qu'un nouveau joueur a rejoint la salle de Roulette,
+en invoquant nouveau_joueur.php et en lui passant en GET le champ "numeroDeSalle" choisie par le joueur.
+Vous écrivez cette partie AJAX en piochant le code dont vous avez besoin sur internet ou https://web.masta.fr/AJAX.html
+et en l'adaptant à vos besoins.
+
+Le code PHP est prêt.
+Le serveur ajoute une nouvelle entrée au CSV des joueurs présents.
+joueurs_roulette.csv (fichier bidon pour simuler la situation)
+specification: nom;score;n° de banc	<- La 1re ligne est la spec on la garde! Le client fera for(n=1; ...
+Joe;25000;0
+Aurelius;12000;1
+Samulius;75000;0
+Barnes;154000;1
+LeJoker87;100000;0
+Elias;250000;1
+
+nouveau_joueur.php
+<?php
+// Récupère les données du formulaire GET
+$nom = "estranger"; //Comme on ne le connait pas il a le nom "estranger" par défaut
+$score = 0;
+$salle = $_GET['numeroDeSalle']; // La salle qu'il vient de sélectionner en cliquant sur une carte
+
+// Ajoute une nouvelle entrée au fichier CSV
+$fic = 'joueurs_roulette.csv'; // Le nom du fichier est dans cette variable pour ne l'éditer qu'une seule fois sans rechercher/remplacer
+$str = file_get_contents($fic); // Récupère le contenu intégral du fichier CSV,
+$str.= "$nom;$score;$salle\n"; // Concatène le nouveau joueur et un saut de ligne
+
+// si le fichier n'existe pas il est créé par fopen() fputcsv() fclose()
+//$fp = fopen($fic, "a"); // ouvre le fichier CSV en mode Append (traduction: ajout de ligne à la fin)
+//fputcsv($fp, $str); // Ces fonctions sont directement issues du langage C
+//fclose($fp);
+
+// le serveur envoie au client la liste des joueurs présents actuellement
+echo $str;
+?>
+
+Comme on n'a pas encore vu la syntaxe PHP copiez/collez lisez le code PHP une fois ça ira.
+Tester ce script en écrivant l'URL
+http://localhost/.../joe/javascript/jeu/nouveau_joueur.php?numeroDeSalle=255
+S'il fonctionne, décommenter les lignes fopen(), relancer 
+puis vérifier que joueurs.csv a été créé
+et qu'il contient bien l'estranger.
+
+
+Pendant que le serveur fait tout ceci en arrière-plan / en parallèle,
+le client:
+	-> Signale en AJAX au serveur qu'un nouveau joueur a rejoint cette salle et attend la liste des joueurs de Roulette.
+	-> Cache les 3 autres cartes.
+	-> Place le texte "Vous avez choisi la Roulette" dans un span bien visible avec getElementById().
+	-> Quand le serveur répond par la liste des joueurs présents - au format CSV,
+			* La table HTML des joueurs est générée et placée dans un div float left ou right selon le banc sur lequel il est assis.
+					dégainer le code Javascript CSV -> table HTML copier/coller/adapter
+			* La carte choisie disparait
+			* Une image de Roulette apparaît (Avec un bouton quitter la salle) /prénom/javascript/jeu/img/roulette.webp
+			* Faire apparaître le bouton "Quitter la salle de Roulette"
+
+=============================================================================
+FTP
+	Créer un dossier /prénom/javascript/jeu en local sur le FTP
+	Puis un lien dans votre index perso pour que tout l'équipe de beta testeurs puisse voir votre jeu.
+
+
+
+
+
+
+
+
+===============================================
+QUESTIONS BONUS
+	Bravo pour être arrivé jusque ici!
+
+	* Modifier le jeu pour ne pas utiliser de CSV, mais un fichier JSON à la place.
+		Rappel du cours https://dwwm.masta.fr/bert/javascript/JSON.html
+
+	* indiquez dans un span le ping pong en millisecondes avec le serveur de prod.
+	C'est le temps écoulé entre le moment où on tente une connexion au serveur (ping) jusqu'à être connecté,
+	et le moment où des données arrivent du serveur vers le client (pong)
+	Injustement appelé ping
+
+SUPER BONUS
+
+	* Étonnez-nous en codant un jeu que vous connaissez!
+
+
+
+
+
+
+
+
